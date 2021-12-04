@@ -1,3 +1,11 @@
+<?php
+	require_once '../app/connection.php';
+	require_once '../app/todo.service.php';
+
+	$service = new TodoService(Connection::connect());
+	$todos = $service->retrivePending();
+?>
+
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -36,23 +44,17 @@
 								<h4>Tarefas pendentes</h4>
 								<hr />
 
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Lavar o carro</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
+								<?php foreach($todos as $todo) { ?>
+									<div class="row mb-3 d-flex align-items-center tarefa">
+										<div class="col-sm-9"><?= $todo->todo ?> (<?= $todo->state ?>)</div>
+										<div class="col-sm-3 mt-2 d-flex justify-content-between">
+											<i class="fas fa-trash-alt fa-lg text-danger"></i>
+											<i class="fas fa-edit fa-lg text-info"></i>
+											<i class="fas fa-check-square fa-lg text-success"></i>
+										</div>
 									</div>
-								</div>
+								<?php } ?>
 
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Passear com o cachorro</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<i class="fas fa-check-square fa-lg text-success"></i>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
