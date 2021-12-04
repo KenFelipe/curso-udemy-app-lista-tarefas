@@ -41,6 +41,17 @@ class TodoService {
 
 		return $stmt->fetchAll(\PDO::FETCH_OBJ);
 	}
+
+	public function register() {
+		$query = '
+			INSERT INTO todos (todo)
+			VALUES (:todo)
+		';
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->bindValue(':todo', $this->todo->__get('todo'));
+		$stmt->execute();
+	}
 }
 
 ?>

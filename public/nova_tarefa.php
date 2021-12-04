@@ -36,10 +36,10 @@
 								<h4>Nova tarefa</h4>
 								<hr />
 
-								<form>
+								<form action="./todo_controller.php?action=register" method="post">
 									<div class="form-group">
 										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
+										<input name="todo" type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
 									</div>
 
 									<button class="btn btn-success">Cadastrar</button>
