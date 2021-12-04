@@ -25,6 +25,22 @@ class TodoService {
 
 		return $stmt->fetchAll(\PDO::FETCH_OBJ);
 	}
+
+	public function retrivePending() {
+		$query = "
+			SELECT
+				todos.id, todos.todo, state.description as state
+			FROM 
+				todos LEFT JOIN state ON todos.state = state.state
+			WHERE
+				state.description = 'pending'
+		";
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_OBJ);
+	}
 }
 
 ?>
