@@ -4,23 +4,14 @@ class Todo {
 	private $id;
 	private $todo;
 	private $state;
+	private $date_registered;
 
-	public function __construct($id, $todo, $state) {
-		$this->id = $id;
-		$this->todo = $todo;
-		$this->status = $state;
+	public function __set($attr, $value) {
+		$this->$attr = $value;
 	}
 
-	public function getId() {
-		return $this->id;
-	}
-
-	public function getTodo() {
-		return $this->todo;
-	}
-
-	public function getStatus() {
-		return $this->state;
+	public function __get($attr) {
+		return $this->$attr;
 	}
 }
 
