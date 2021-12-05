@@ -76,6 +76,19 @@ class TodoService {
     $stmt->bindValue(':id', $id);
     $stmt->execute();
   }
+
+  public function update($id, $todo) {
+    $query = '
+      UPDATE todos
+      SET todo = :todo
+      WHERE id = :id
+    ';
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(':todo', $todo);
+    $stmt->execute();
+  }
 }
 
 ?>

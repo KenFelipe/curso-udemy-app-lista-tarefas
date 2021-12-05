@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="./post.js"></script>
+    <script src="./edit.js"></script>
   </head>
 
   <body>
@@ -48,14 +49,21 @@
 
                 <?php foreach($todos as $todo) { ?>
                   <div class="row mb-3 d-flex align-items-center tarefa">
-                    <div class="col-sm-9"><?= $todo->todo ?> (<?= $todo->state ?>)</div>
+                    <!-- <div class="col-sm-9"><?= $todo->todo ?> (<?= $todo->state ?>)</div> -->
+                    <div id="todo_<?= $todo->id ?>" class="col-sm-9">
+                      <?= $todo->todo ?> (<?= $todo->state ?>)
+                    </div>
                     <div class="col-sm-3 mt-2 d-flex justify-content-between">
                       <i class="fas fa-trash-alt fa-lg text-danger" onclick="post(
                         './todo_controller.php?action=delete&page=todas_tarefas',
                         { id: <?= $todo->id ?> }
                       )"></i>
 
-                      <i class="fas fa-edit fa-lg text-info"></i>
+                      <i class="fas fa-edit fa-lg text-info" onclick="edit(
+                        './todo_controller.php?action=edit&page=todas_tarefas',
+                        <?= $todo->id ?>, 
+                        '<?= $todo->todo ?>'
+                      )"></i>
 
                       <i class="fas fa-check-square fa-lg text-success" onclick="post(
                         './todo_controller.php?action=done&page=todas_tarefas',

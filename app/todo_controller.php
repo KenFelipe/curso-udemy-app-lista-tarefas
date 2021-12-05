@@ -29,5 +29,11 @@
 
     header("Location: ./{$_GET['page']}.php");
   }
+  else if($action === 'edit') {
+    $service = new TodoService(Connection::connect());
+    $service->update($_POST['id'], $_POST['todo']);
+
+    header("Location: ./{$_GET['page']}.php");
+  }
 
 ?>
