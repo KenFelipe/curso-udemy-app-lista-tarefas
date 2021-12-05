@@ -17,5 +17,11 @@
 
 		header('Location: ./nova_tarefa.php?success=1');
 	}
+	else if($action === 'done') {
+		$service = new TodoService(Connection::connect());
+		$service->done($_POST['id']);
+
+		header("Location: ./{$_GET['page']}.php");
+	}
 
 ?>

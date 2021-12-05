@@ -15,6 +15,8 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+		<script src="./post.js"></script>
 	</head>
 
 	<body>
@@ -50,7 +52,12 @@
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger"></i>
 											<i class="fas fa-edit fa-lg text-info"></i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
+											<!-- <i class="fas fa-check-square fa-lg text-success"></i> -->
+
+											<i class="fas fa-check-square fa-lg text-success" onclick="post(
+												'./todo_controller.php?action=done&page=index',
+												{ id: <?= $todo->id ?> }
+											)"></i>
 										</div>
 									</div>
 								<?php } ?>

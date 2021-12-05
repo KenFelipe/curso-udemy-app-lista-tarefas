@@ -52,6 +52,19 @@ class TodoService {
 		$stmt->bindValue(':todo', $this->todo->__get('todo'));
 		$stmt->execute();
 	}
+
+	public function done($id) {
+		// state: pending = 1, done = 2
+		$query = '
+			UPDATE todos
+			SET state = 2
+			WHERE id = :id
+		';
+
+		$stmt = $this->conn->prepare($query);
+		$stmt->bindValue(':id', $id);
+		$stmt->execute();
+	}
 }
 
 ?>
