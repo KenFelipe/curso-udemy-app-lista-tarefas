@@ -65,6 +65,17 @@ class TodoService {
     $stmt->bindValue(':id', $id);
     $stmt->execute();
   }
+
+  public function delete($id) {
+    $query = '
+      DELETE FROM todos
+      WHERE id = :id
+    ';
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+  }
 }
 
 ?>

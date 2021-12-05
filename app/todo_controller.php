@@ -23,5 +23,11 @@
 
     header("Location: ./{$_GET['page']}.php");
   }
+  else if($action === 'delete') {
+    $service = new TodoService(Connection::connect());
+    $service->delete($_POST['id']);
+
+    header("Location: ./{$_GET['page']}.php");
+  }
 
 ?>
