@@ -49,7 +49,6 @@
 
                 <?php foreach($todos as $todo) { ?>
                   <div class="row mb-3 d-flex align-items-center tarefa">
-                    <!-- <div class="col-sm-9"><?= $todo->todo ?> (<?= $todo->state ?>)</div> -->
                     <div id="todo_<?= $todo->id ?>" class="col-sm-9">
                       <?= $todo->todo ?> (<?= $todo->state ?>)
                     </div>
